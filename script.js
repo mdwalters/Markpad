@@ -19,6 +19,7 @@ function convertMarkdownToHtml(markdownText) {
   html = html.replace(/<\/li>\n<li>/g, "\n");
   html = html.replace(/<li>(.+)<\/li>/g, "<li><p>$1</p></li>");
   html = html.replace(/\n{2,}/g, "<br><br>");
+  html = html.replace(/```([^`]+)```/g, "<div class=\"blockcode\">$1<div>");
   return html;
 }
 
