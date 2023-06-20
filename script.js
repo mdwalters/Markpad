@@ -8,6 +8,7 @@ function convertMarkdownToHtml(markdownText) {
   html = html.replace(/__(.+?)__/g, "<strong>$1</strong>");
   html = html.replace(/\*(.+?)\*/g, "<em>$1</em>");
   html = html.replace(/_(.+?)_/g, "<em>$1</em>");
+  html = html.replace(/```([^`]+)```/g, "<div class=\"blockcode\">$1<div>");
   html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
   html = html.replace(/~~(.+?)~~/g, "<del>$1</del>");
   html = html.replace(/^(#{1,6})\s(.+)$/gm, function(match, p1, p2) {
@@ -19,7 +20,6 @@ function convertMarkdownToHtml(markdownText) {
   html = html.replace(/<\/li>\n<li>/g, "\n");
   html = html.replace(/<li>(.+)<\/li>/g, "<li><p>$1</p></li>");
   html = html.replace(/\n{2,}/g, "<br><br>");
-  html = html.replace(/```([^`]+)```/g, "<div class=\"blockcode\">$1<div>");
   return html;
 }
 
